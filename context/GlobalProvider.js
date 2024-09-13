@@ -11,6 +11,7 @@ const GlobalProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [pokemonTeam, setPokemonTeam] = useState([]);
+    const [hasMaxForTeam, setHasMaxForTeam] = useState(false)
 
     useEffect(() => {
         getCurrentUser().then((res) => {
@@ -29,6 +30,12 @@ const GlobalProvider = ({children}) => {
         })
     }, []);
 
+    useEffect(() => {
+        if (pokemonTeam.length === 6) {
+            setHasMaxForTeam(true);
+        }
+    }, [pokemonTeam]);
+
     return (
         <GlobalContext.Provider
             value={{
@@ -38,7 +45,9 @@ const GlobalProvider = ({children}) => {
                 setUser,
                 isLoading,
                 pokemonTeam,
-                setPokemonTeam
+                setPokemonTeam,
+                hasMaxForTeam,
+                setHasMaxForTeam
             }}
         >
             {children}

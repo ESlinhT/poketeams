@@ -45,10 +45,12 @@ const PokemonId = () => {
     };
 
     const handleAddPokemon = () => {
-        if (!hasMaxForTeam) {
+        if (!hasMaxForTeam && !pokemonTeam.includes(pokemonId)) {
             const currentTeam = [...pokemonTeam];
             currentTeam.push(pokemonId);
-            setPokemonTeam(currentTeam)
+            setPokemonTeam(currentTeam);
+        } else if (!hasMaxForTeam) {
+            Alert.alert('Info', 'You cannot have duplicates on your team.')
         }
         if (hasMaxForTeam) {
             Alert.alert('Info', 'You can only have a max of 6 on your team.')

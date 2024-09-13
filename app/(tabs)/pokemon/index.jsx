@@ -10,17 +10,6 @@ const Index = () => {
     const [pokemonTeam, setPokemonTeam] = useState([]);
     const [hasMaxForTeam, setHasMaxForTeam] = useState(false)
 
-    const handleAddPokemon = (id) => {
-        if (!hasMaxForTeam) {
-            const currentTeam = [...pokemonTeam];
-            currentTeam.push(id);
-            setPokemonTeam(currentTeam)
-        }
-        if (hasMaxForTeam) {
-            Alert.alert('Info', 'You can only have a max of 6 on your team.')
-        }
-    }
-
     const handleRemovePokemon = (index) => {
         const currentTeam = [...pokemonTeam];
         const newArray = currentTeam.filter((item, arrayIndex) => {
@@ -30,12 +19,6 @@ const Index = () => {
         setPokemonTeam(newArray)
         setHasMaxForTeam(false);
     }
-
-    useEffect(() => {
-        if (pokemonTeam.length === 6) {
-            setHasMaxForTeam(true);
-        }
-    }, [pokemonTeam]);
 
     return (
         <SafeViewLayout backgroundImage={darkBg} containerStyles="h-[95vh]">
@@ -52,18 +35,10 @@ const Index = () => {
                     <View className="my-6 px-2 space-y-6 items-center">
                         <View className="justify-between items-start flex-row">
                             <View>
-                                <Text className="font-bold text-3xl text-gray-100 uppercase">
-                                    Create your team
+                                <Text className="font-bold text-2xl text-gray-100 uppercase text-center">
+                                    Click on a Pokemon to View their Stats
                                 </Text>
                             </View>
-                        </View>
-                        <View
-                            className="border-2 border-red-600 rounded-full p-3 flex-row h-[60px] w-[95%] gap-1 items-center">
-                            {pokemonTeam.map((pokemonId, index) => (
-                                <TouchableOpacity onPress={() => handleRemovePokemon(index)}>
-                                    <Image source={sprites[`${pokemonId}`]} className="w-[50] h-[50]"/>
-                                </TouchableOpacity>
-                            ))}
                         </View>
                     </View>
                 )}
