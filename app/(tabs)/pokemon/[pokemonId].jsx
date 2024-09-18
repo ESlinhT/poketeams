@@ -90,7 +90,7 @@ const PokemonId = () => {
                     speed: res.stats[5].base_stat,
                 })
             });
-    }, []);
+    }, [pokemonId]);
 
     return (
         <SafeViewLayout
@@ -111,7 +111,7 @@ const PokemonId = () => {
             <View className="h-full flex-1 items-center justify-center">
                 <Image source={sprites[`${pokemonId}`]} className="w-[300px] h-[300px]"/>
                 <View className="items-start">
-                    {Object.keys(pokemonStats).map((stat) => (
+                    {Object.keys(pokemonStats).filter(stat => stat !== 'id').map((stat) => (
                         <View key={stat} className="flex-row text-white">
                             <Text className="text-white uppercase">{stat}: </Text>
                             <Text className="text-white font-extrabold uppercase">{pokemonStats[stat]}</Text>

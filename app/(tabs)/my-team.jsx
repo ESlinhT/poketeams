@@ -27,8 +27,8 @@ const MyTeam = () => {
                 keyExtractor={(item) => item.id}
                 renderItem={({item}) => (
                     <TouchableOpacity onPress={() => router.push(`/pokemon/${item.id}`)}
-                                      className="rounded-2xl border-2 border-red-600 m-1 flex-row items-center bg-black px-5 relative">
-                        <Image source={sprites[`${item?.id}`]} className="w-[100px] h-[100px]"/>
+                                      className="rounded-2xl border-2 border-red-600 m-1 flex-row items-center bg-black px-5 py-1 relative">
+                        <Image source={sprites[`${item?.id}`]} className="w-[90px] h-[90px]"/>
                         <View className="text-white text-center">
                             <Text className="text-white font-extrabold uppercase text-3xl ml-6">{item.name}</Text>
                         </View>
@@ -42,7 +42,7 @@ const MyTeam = () => {
                         <View className="justify-between items-start flex-row">
                             <View>
                                 <Text className="font-bold text-2xl text-gray-100 uppercase text-center">
-                                    Click on a Pokemon to remove from team
+                                    My Pokemon Team
                                 </Text>
                             </View>
                         </View>
