@@ -17,7 +17,7 @@ const PokemonId = () => {
         type: '',
         hp: '',
         attack: '',
-        defence: '',
+        defense: '',
         specialAttack: '',
         specialDefense: '',
         speed: ''
@@ -82,7 +82,7 @@ const PokemonId = () => {
                     type: res.types[0].type.name,
                     hp: res.stats[0].base_stat,
                     attack: res.stats[1].base_stat,
-                    defence: res.stats[2].base_stat,
+                    defense: res.stats[2].base_stat,
                     specialAttack: res.stats[3].base_stat,
                     specialDefense: res.stats[4].base_stat,
                     speed: res.stats[5].base_stat,
