@@ -1,5 +1,4 @@
-import {View, Text, Image, FlatList, TouchableOpacity, Alert} from 'react-native'
-import React, {useEffect, useState} from 'react'
+import {View, Text, Image, FlatList, TouchableOpacity} from 'react-native'
 import darkBg from "../../../assets/dark-bg.png";
 import SafeViewLayout from "../../../components/SafeViewLayout";
 import sprites from "../../../constants/sprites";
@@ -7,18 +6,6 @@ import { router} from "expo-router";
 
 const Index = () => {
     const dataKeys = Object.keys(sprites);
-    const [pokemonTeam, setPokemonTeam] = useState([]);
-    const [hasMaxForTeam, setHasMaxForTeam] = useState(false)
-
-    const handleRemovePokemon = (index) => {
-        const currentTeam = [...pokemonTeam];
-        const newArray = currentTeam.filter((item, arrayIndex) => {
-            return arrayIndex !== index;
-        });
-
-        setPokemonTeam(newArray)
-        setHasMaxForTeam(false);
-    }
 
     return (
         <SafeViewLayout backgroundImage={darkBg} containerStyles="h-[95vh]">

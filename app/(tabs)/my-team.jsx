@@ -28,7 +28,7 @@ const MyTeam = () => {
                 renderItem={({item}) => (
                     <TouchableOpacity onPress={() => router.push(`/pokemon/${item.id}`)}
                                       className="rounded-2xl border-2 border-red-600 m-1 flex-row items-center bg-black px-5 py-1 relative">
-                        <Image source={sprites[`${item?.id}`]} className="w-[90px] h-[90px]"/>
+                        <Image source={sprites[`${item?.id}`]} className="w-[80px] h-[80px]"/>
                         <View className="text-white text-center">
                             <Text className="text-white font-extrabold uppercase text-3xl ml-6">{item.name}</Text>
                         </View>
