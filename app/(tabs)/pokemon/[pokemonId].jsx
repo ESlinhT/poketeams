@@ -13,6 +13,7 @@ const PokemonId = () => {
     const {pokemonTeam, setPokemonTeam} = useGlobalContext();
     const [hasMaxForTeam, setHasMaxForTeam] = useState(false);
     const [pokemonStats, setPokemonStats] = useState({
+        id: '',
         name: '',
         type: '',
         hp: '',
@@ -45,9 +46,9 @@ const PokemonId = () => {
     };
 
     const handleAddPokemon = () => {
-        if (!hasMaxForTeam && !pokemonTeam.includes(pokemonId)) {
+        if (!hasMaxForTeam && !pokemonTeam.find(pokemon => pokemon.id === pokemonId)) {
             const currentTeam = [...pokemonTeam];
-            currentTeam.push(pokemonId);
+            currentTeam.push(pokemonStats);
             setPokemonTeam(currentTeam);
         } else if (!hasMaxForTeam) {
             Alert.alert('Info', 'You cannot have duplicates on your team.')
@@ -78,6 +79,7 @@ const PokemonId = () => {
             .then((res) => {
                 setPokemonStats({
                     ...pokemonStats,
+                    id: pokemonId,
                     name: res.species.name,
                     type: res.types[0].type.name,
                     hp: res.stats[0].base_stat,
@@ -102,8 +104,8 @@ const PokemonId = () => {
             <Pressable
                 onPress={() => router.push('/my-team')}
                 className="absolute z-10 border-[3px] top-[15px] right-3 border-white rounded-full flex-row h-[50px] w-[52%] justify-center items-center">
-                {pokemonTeam.length ? pokemonTeam.map((pokemonId) => (
-                    <Image key={pokemonId} source={sprites[`${pokemonId}`]} className="w-[30px] h-[30px]"/>
+                {pokemonTeam.length ? pokemonTeam.map((pokemon) => (
+                    <Image key={pokemon.id} source={sprites[`${pokemon.id}`]} className="w-[30px] h-[30px]"/>
                 )) : <Text className="text-white">Team Count Empty</Text>}
             </Pressable>
             <View className="h-full flex-1 items-center justify-center">
